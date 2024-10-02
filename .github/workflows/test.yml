@@ -22,6 +22,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Create results directory
+        run: mkdir -p test-results # Create the directory if it doesn't exist
+
       - name: Run tests and generate results
         run: npm test -- --reporter=json > test-results/results.json
 
