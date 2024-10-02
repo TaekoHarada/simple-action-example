@@ -22,11 +22,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
-        run: npm test
+      - name: Run tests and generate results
+        run: npm test -- --reporter=json > test-results/results.json
+
+      - name: List test results
+        run: ls -R test-results
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
           name: test-results
-          path: test-results/
+          path: test-results/**/*
